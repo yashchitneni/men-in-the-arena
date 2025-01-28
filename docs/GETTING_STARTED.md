@@ -1,93 +1,94 @@
 # Getting Started Guide 🚀
 
-This guide will walk you through setting up your community website step by step. No coding experience required!
+There are two ways to get started with this template - choose the one that works best for you!
 
-## Prerequisites
+## Option 1: Quick Start with Cursor (Recommended) 🎯
 
-You'll need to install these tools first (don't worry, it's easy!):
+1. Download [Cursor](https://cursor.sh/) - It's a modern code editor with AI capabilities
+2. Open Cursor and click "Clone Repository"
+3. Enter: `https://github.com/yashchitneni/community-landing-template`
+4. Let Cursor handle everything else! It will:
+   - Set up Node.js automatically
+   - Install all dependencies
+   - Help you customize the template with AI
 
-1. **Node.js** - This helps run your website locally
-   - Go to [Node.js website](https://nodejs.org)
-   - Download the "LTS" version (LTS means Long Term Support)
-   - Run the installer you downloaded
-   - To verify installation, open your terminal/command prompt and type:
-     ```bash
-     node --version
-     ```
-   - If you see a number like `v18.17.0`, you're good to go!
+## Option 2: Traditional Setup 🛠️
 
-2. **Visual Studio Code** - This helps you edit the website content
-   - Download from [Visual Studio Code website](https://code.visualstudio.com)
-   - Install it on your computer
-   - It's free and super helpful for editing your website!
+If you prefer to set things up manually:
 
-## Setting Up Your Website
+### Prerequisites
 
-### Step 1: Get the Template Files
+1. **Node.js** - Required to run the website
+   - Download from [Node.js website](https://nodejs.org)
+   - Choose the "LTS" version
+   - Follow the installer instructions
 
-1. Go to the template repository (where you're reading this)
-2. Click the green "Code" button
-3. Click "Download ZIP"
-4. Unzip the file to a folder on your computer
+2. **Code Editor**
+   - We recommend [Cursor](https://cursor.sh/) for the best experience
+   - Alternatives: VS Code, Sublime Text, etc.
 
-### Step 2: Open the Project
+### Step-by-Step Setup
 
-1. Open Visual Studio Code
-2. Go to File → Open Folder
-3. Select the folder you just unzipped
-4. If asked "Do you trust the authors?", click "Yes"
+1. **Get the Template**
+   - Visit [community-landing-template](https://github.com/yashchitneni/community-landing-template)
+   - Click the green "Use this template" button
+   - Choose "Create a new repository"
+   - Follow the prompts to create your copy
 
-### Step 3: Install Dependencies
-
-1. In Visual Studio Code, click View → Terminal
-2. In the terminal that appears, type:
+2. **Clone & Install**
    ```bash
+   git clone [YOUR-REPOSITORY-URL]
+   cd [REPOSITORY-NAME]
    npm install
    ```
-3. Wait for it to finish (this might take a few minutes)
 
-### Step 4: Start Your Website
-
-1. In the same terminal, type:
+3. **Start Development**
    ```bash
    npm run dev
    ```
-2. Open your web browser
-3. Go to `http://localhost:3000`
-4. You should see your website running!
 
-## Making It Your Own
+4. Open `http://localhost:3000` in your browser
 
-### Changing Text
+## Making It Your Own 🎨
 
-1. In VS Code, look at the left sidebar
-2. Open the `src/components/sections` folder
-3. Click on any file to edit its contents
-4. Common files to edit:
-   - `Hero.tsx` - Main headline and intro
-   - `Features.tsx` - Your features/benefits
-   - `FAQ.tsx` - Common questions
-   - `Footer.tsx` - Contact information
+### Using Cursor AI (Easiest Method)
 
-### Changing Colors
+1. Open any file in Cursor
+2. Press `Cmd/Ctrl + K` to activate AI
+3. Ask things like:
+   - "Help me customize the hero section"
+   - "Change the color scheme to match my brand"
+   - "Add a new feature section"
 
-1. Open `src/app/globals.css`
-2. Look for the `:root` section
-3. Change color values to match your brand
-4. Save the file - changes appear instantly!
+### Manual Customization
 
-### Adding Images
+1. **Change Text**
+   - Open files in `src/components/sections`
+   - Edit text directly
+   - Save to see changes instantly
 
-1. Put your images in the `public` folder
-2. Reference them in components like:
-   ```html
-   <img src="/your-image.jpg" alt="Description" />
-   ```
+2. **Change Colors**
+   - Open `src/app/globals.css`
+   - Modify color values
+   - Use a color picker tool if needed
 
-## Need Help?
+3. **Add Images**
+   - Put images in `public` folder
+   - Update image paths in components
 
-- 🤔 Check our [FAQ](./FAQ.md)
-- 🐛 Found a problem? Open an "Issue" on GitHub
-- 💡 Want to suggest something? Create a "Discussion"
+## Need Help? 🤝
 
-Remember: There's no such thing as a stupid question. We're here to help! 
+- 🤖 Use Cursor's AI assistant (Cmd/Ctrl + K)
+- 📖 Check our [FAQ](./FAQ.md)
+- 🐛 Open an issue on GitHub
+- 💡 Join our community discussions
+
+## Deployment 🚀
+
+### Quick Deploy
+1. Create a [Vercel](https://vercel.com) account
+2. Click "New Project"
+3. Import your repository
+4. Click "Deploy"
+
+Your site will be live in minutes! 
