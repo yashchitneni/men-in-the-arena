@@ -88,8 +88,6 @@ Need help? We've got you covered!
 
 - 📖 [Detailed Documentation](./docs)
 - ❓ [Frequently Asked Questions](./docs/FAQ.md)
-- 🐛 [Issue Tracker](./issues)
-- 💬 [Discord Community](#)
 
 ## 🌟 Show Your Support
 
@@ -104,7 +102,7 @@ Free to use for personal and commercial projects. Attribution appreciated but no
 
 ## 🙋‍♂️ About Us
 
-Made with ❤️ by [Your Name/Team]. We believe everyone deserves a beautiful website, regardless of their technical skills.
+Made with ❤️ by Yash Chitneni. We believe everyone deserves a beautiful website, regardless of their technical skills.
 
 ---
 

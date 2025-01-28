@@ -79,8 +79,6 @@
 
 ## Still Have Questions?
 
-- 📧 Email us at: support@yourtemplate.com
-- 💬 Join our Discord community
 - 🐛 Open an issue on GitHub
 
 Remember: The only bad question is the one you don't ask! We're here to help you succeed with your website. 

@@ -173,7 +173,6 @@ export const Card = ({ title, children }) => (
 ## Need More Help? 🤝
 
 - 📖 Check our [FAQ](./FAQ.md)
-- 💡 Join our Discord community
 - 🐛 Open an issue on GitHub
 
 Remember: Take it step by step, and don't hesitate to ask for help! 
