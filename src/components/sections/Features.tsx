@@ -1,34 +1,44 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Users, Calendar, MessageSquare, Heart } from 'lucide-react'
+import { EventCard } from '@/components/EventCard'
 
-const features = [
+const events = [
   {
-    icon: Users,
-    title: 'Active Community',
-    description: 'Connect with like-minded individuals in our vibrant community.'
+    id: '1',
+    title: 'Build Your Identity',
+    imageUrl: '/images/events/workout-1.jpg',
+    leader: 'Yash',
+    date: 'February 8, 2025',
+    time: '4:00 PM',
+    location: 'Squatch Frontier Fitness',
+    googleMapsUrl: 'https://maps.google.com/?q=Squatch+Frontier+Fitness'
   },
   {
-    icon: Calendar,
-    title: 'Regular Events',
-    description: 'Participate in weekly meetups, workshops, and social gatherings.'
+    id: '2',
+    title: 'Strength & Brotherhood',
+    imageUrl: '/images/events/workout-2.jpg',
+    leader: 'Kevin',
+    date: 'February 22, 2025',
+    time: '4:00 PM',
+    location: 'Squatch Frontier Fitness',
+    googleMapsUrl: 'https://maps.google.com/?q=Squatch+Frontier+Fitness'
   },
   {
-    icon: MessageSquare,
-    title: 'Engaging Discussions',
-    description: 'Share ideas and learn from others in our discussion forums.'
-  },
-  {
-    icon: Heart,
-    title: 'Supportive Environment',
-    description: 'Experience a welcoming atmosphere where everyone helps each other grow.'
+    id: '3',
+    title: 'Rise Together',
+    imageUrl: '/images/events/workout-3.jpg',
+    leader: 'Mason',
+    date: 'March 7, 2025',
+    time: '4:00 PM',
+    location: 'Squatch Frontier Fitness',
+    googleMapsUrl: 'https://maps.google.com/?q=Squatch+Frontier+Fitness'
   }
 ]
 
 export const Features = () => {
   return (
-    <section className="py-24 bg-muted/50">
+    <section id="events" className="py-24 bg-muted/50">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,27 +48,16 @@ export const Features = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Why Join Our Community?
+            Upcoming Events
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover the benefits of being part of our growing community
+            Join us for our next workout sessions - challenge yourself and grow with the brotherhood
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="p-6 bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <feature.icon className="w-12 h-12 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {events.map((event, index) => (
+            <EventCard key={event.id} event={event} index={index} />
           ))}
         </div>
       </div>

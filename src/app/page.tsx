@@ -1,9 +1,10 @@
 import React from 'react'
+import { Navigation } from '@/components/Navigation'
 import { Hero } from '@/components/sections/Hero'
 import { Features } from '@/components/sections/Features'
+import { Gallery } from '@/components/sections/Gallery'
+import { Partners } from '@/components/sections/Partners'
 import { Testimonials } from '@/components/sections/Testimonials'
-import { Statistics } from '@/components/sections/Statistics'
-import { Activities } from '@/components/sections/Activities'
 import { JoinCommunity } from '@/components/sections/JoinCommunity'
 import { FAQ } from '@/components/sections/FAQ'
 import { Footer } from '@/components/sections/Footer'
@@ -11,11 +12,12 @@ import { Footer } from '@/components/sections/Footer'
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <Navigation />
       <Hero />
       <Features />
-      <Statistics />
+      <Gallery />
+      <Partners />
       <Testimonials />
-      <Activities />
       <JoinCommunity />
       <FAQ />
       <Footer />

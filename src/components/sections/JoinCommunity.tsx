@@ -2,8 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import { SignUpModal } from '@/components/SignUpModal'
+import { useState } from 'react'
 
 export const JoinCommunity = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <section id="join" className="py-24 bg-primary/5">
       <div className="container px-4 mx-auto text-center">
@@ -19,11 +23,20 @@ export const JoinCommunity = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             Take the first step towards being part of something amazing. Join our community today!
           </p>
-          <Button size="lg" className="text-lg">
+          <Button 
+            size="lg" 
+            className="text-lg"
+            onClick={() => setIsModalOpen(true)}
+          >
             Join Now
           </Button>
         </motion.div>
       </div>
+
+      <SignUpModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   )
 } 

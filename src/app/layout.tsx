@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Community Landing',
-  description: 'A modern landing page template for communities',
+  title: 'Men in the Arena',
+  description: 'A brotherhood of men committed to growth and impact',
 }
 
 export default function RootLayout({
@@ -15,8 +15,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="scroll-smooth">
+      <body className={inter.className}>
+        {children}
+      </body>
     </html>
   )
 } 
