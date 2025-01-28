@@ -1,105 +1,60 @@
-# 🌟 Community Landing Page Template
+# Men in the Arena
 
-A beautiful, ready-to-use website template for communities and organizations. Perfect for beginners - no coding experience required!
+A brotherhood of men committed to growth and impact. This website serves as the digital home for our community, featuring upcoming events, testimonials, and ways to get involved.
 
-![Template Preview](./public/images/screenshots/Hero.png)
-![Template Preview](./public/images/screenshots/JoinCommunity.png)
-![Template Preview](./public/images/screenshots/Testimonials.png)
+## Features
 
-## 🎯 Perfect For
+- Modern, responsive design
+- Event scheduling and management
+- Photo gallery
+- Testimonials
+- FAQ section
+- Partner showcase
+- Newsletter signup
 
-- 🤝 Online Communities
-- 🏢 Organizations
-- 🎓 Educational Groups
-- 🎨 Creative Collectives
-- 🌱 Startups
-- 📱 Product Landing Pages
+## Tech Stack
 
-## ✨ Features
+- Next.js 14
+- React 18
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Radix UI Components
+- Airtable (for event management)
 
-- 🎨 Modern, Professional Design
-- 📱 Works on All Devices (Mobile, Tablet, Desktop)
-- 🌙 Dark & Light Mode
-- ⚡ Super Fast Loading
-- 🔍 SEO Friendly
-- ♿ Accessible to Everyone
-- 🎭 Smooth Animations
+## Getting Started
 
-## 🚀 Getting Started
+1. Clone the repository:
+```bash
+git clone https://github.com/[your-username]/men-in-the-arena.git
+```
 
-### Complete Beginner?
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-👉 [Click here for our step-by-step guide](./docs/GETTING_STARTED.md)
+3. Create a `.env.local` file in the root directory and add your environment variables:
+```bash
+AIRTABLE_API_KEY=your_api_key
+AIRTABLE_BASE_ID=your_base_id
+```
 
-### Quick Start (if you're familiar with coding)
+4. Run the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-1. Clone the repo
-   ```bash
-   git clone https://github.com/yourusername/community-landing-template.git
-   ```
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-2. Install dependencies
-   ```bash
-   npm install
-   ```
+## Contributing
 
-3. Start development server
-   ```bash
-   npm run dev
-   ```
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-4. Open http://localhost:3000 - you're ready!
+## License
 
-## 🎨 Customization
-
-### Easy Mode (No Coding Required)
-
-1. **Change Text**
-   - Open files in `src/components/sections`
-   - Find the text you want to change
-   - Replace it with your content
-   - Save the file
-
-2. **Change Colors**
-   - Open `src/app/globals.css`
-   - Look for `:root`
-   - Modify color values
-
-3. **Add Images**
-   - Put your images in `public` folder
-   - Update image paths in components
-
-👉 [See detailed customization guide](./docs/CUSTOMIZATION.md)
-
-## 🛠️ Built With
-
-- [Next.js 14](https://nextjs.org/) - The React Framework
-- [TailwindCSS](https://tailwindcss.com/) - For Styling
-- [Framer Motion](https://www.framer.com/motion/) - For Animations
-- [TypeScript](https://www.typescriptlang.org/) - For Code Safety
-
-## 🤝 Support
-
-Need help? We've got you covered!
-
-- 📖 [Detailed Documentation](./docs)
-- ❓ [Frequently Asked Questions](./docs/FAQ.md)
-
-## 🌟 Show Your Support
-
-If this template helps you, please:
-- ⭐ Star this repository
-- 🔄 Share it with others
-- 📸 Tag us when you launch your site!
-
-## 📝 License
-
-Free to use for personal and commercial projects. Attribution appreciated but not required.
-
-## 🙋‍♂️ About Us
-
-Made with ❤️ by Yash Chitneni. We believe everyone deserves a beautiful website, regardless of their technical skills.
-
----
-
-**Ready to start?** Check out our [Getting Started Guide](./docs/GETTING_STARTED.md)! 
+[MIT](https://choosealicense.com/licenses/mit/) 
