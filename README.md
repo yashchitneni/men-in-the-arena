@@ -71,12 +71,6 @@ A beautiful, ready-to-use website template for communities and organizations. Pe
 
 👉 [See detailed customization guide](./docs/CUSTOMIZATION.md)
 
-## 📱 Preview
-
-| Mobile | Tablet | Desktop |
-|--------|---------|----------|
-| ![Mobile](./public/screenshots/mobile.png) | ![Tablet](./public/screenshots/tablet.png) | ![Desktop](./public/screenshots/desktop.png) |
-
 ## 🛠️ Built With
 
 - [Next.js 14](https://nextjs.org/) - The React Framework
