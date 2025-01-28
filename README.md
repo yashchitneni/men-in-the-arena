@@ -2,7 +2,7 @@
 
 A beautiful, ready-to-use website template for communities and organizations. Perfect for beginners - no coding experience required!
 
-![Template Preview](./public/screenshots/preview.png)
+![Template Preview](./public/images/screenshots/Hero.png)
 
 ## 🎯 Perfect For
 
