@@ -29,7 +29,7 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section className="py-24">
+    <section id="faq" className="py-24">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
