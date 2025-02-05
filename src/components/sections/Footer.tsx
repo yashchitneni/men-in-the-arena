@@ -1,7 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { Facebook, Instagram } from 'lucide-react'
+
+const SubstackIcon = () => (
+  <svg
+    className="w-6 h-6"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" />
+  </svg>
+);
 
 export const Footer = () => {
   return (
@@ -30,20 +41,16 @@ export const Footer = () => {
           <div>
             <h3 className="font-bold text-lg mb-4">Contact</h3>
             <ul className="space-y-2 text-muted-foreground">
-              <li>Email: hello@meninthearena.com</li>
               <li>Location: Squatch Frontier Fitness</li>
             </ul>
           </div>
           <div>
             <h3 className="font-bold text-lg mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Facebook className="w-6 h-6" />
+              <a href="https://meninthearena.substack.com/" className="text-muted-foreground hover:text-primary transition-colors">
+                <SubstackIcon />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.instagram.com/meninthearena_/" className="text-muted-foreground hover:text-primary transition-colors">
                 <Instagram className="w-6 h-6" />
               </a>
             </div>

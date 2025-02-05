@@ -21,35 +21,41 @@ interface EventCardProps {
 
 export const EventCard = ({ event, index }: EventCardProps) => {
   const handleAddToCalendar = () => {
-    // Parse the date string properly
-    const [month, day, year] = event.date.split(', ')[0].split(' ')
-    const [time, period] = event.time.split(' ')
-    const [hours, minutes] = time.split(':')
-    
-    // Convert 12-hour format to 24-hour format
-    let hour = parseInt(hours)
-    if (period === 'PM' && hour !== 12) hour += 12
-    if (period === 'AM' && hour === 12) hour = 0
+    try {
+      // Parse the date string properly
+      const dateParts = event.date.split(', ')[0].split(' ')
+      const month = dateParts[0]
+      const day = parseInt(dateParts[1].replace(',', ''))
+      const year = parseInt(dateParts[2] || new Date().getFullYear().toString())
 
-    // Create Date object
-    const eventDate = new Date(
-      parseInt(year),
-      new Date(Date.parse(month + " 1, " + year)).getMonth(),
-      parseInt(day),
-      hour,
-      parseInt(minutes)
-    )
-    
-    // Add one hour for event duration
-    const endDate = new Date(eventDate.getTime() + 60 * 60 * 1000)
+      // Parse time
+      const [timeStr, period] = event.time.split(' ')
+      const [hours, minutes] = timeStr.split(':')
+      
+      // Convert 12-hour format to 24-hour format
+      let hour = parseInt(hours)
+      if (period.toUpperCase() === 'PM' && hour !== 12) hour += 12
+      if (period.toUpperCase() === 'AM' && hour === 12) hour = 0
 
-    const formatDate = (date: Date) => {
-      return date.toISOString().replace(/-|:|\.\d+/g, '')
+      // Create Date object for start time
+      const monthIndex = new Date(Date.parse(`${month} 1, ${year}`)).getMonth()
+      const eventDate = new Date(year, monthIndex, day, hour, parseInt(minutes))
+      
+      // Add one hour for event duration
+      const endDate = new Date(eventDate.getTime() + (60 * 60 * 1000))
+
+      // Format dates for Google Calendar URL
+      const formatDate = (date: Date) => {
+        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+      }
+
+      const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${formatDate(eventDate)}/${formatDate(endDate)}&details=${encodeURIComponent(`Join us for this Men in the Arena workout session led by ${event.leader}.\n\nLocation: ${event.location}`)}&location=${encodeURIComponent(event.location)}`
+
+      window.open(googleCalendarUrl, '_blank')
+    } catch (error) {
+      console.error('Error formatting date:', error)
+      alert('Sorry, there was an error adding the event to your calendar. Please try again.')
     }
-
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${formatDate(eventDate)}/${formatDate(endDate)}&details=${encodeURIComponent(`Join us for this Men in the Arena workout session led by ${event.leader}.\n\nLocation: ${event.location}`)}&location=${encodeURIComponent(event.location)}`
-
-    window.open(googleCalendarUrl, '_blank')
   }
 
   const handleLocationClick = () => {

@@ -11,19 +11,19 @@ import {
 const faqs = [
   {
     question: "What makes this community special?",
-    answer: "Our community is built on the principles of collaboration, support, and growth. We bring together passionate individuals from diverse backgrounds who share common goals and interests."
+    answer: "We don't only push ourselves, but create room for other men to tap into their full potential. Our community is built on the foundation of mutual growth and empowerment."
   },
   {
-    question: "How can I participate in events?",
-    answer: "Once you're a member, you'll have access to our events calendar. You can RSVP to any event that interests you and join either in-person or virtually, depending on the event type."
+    question: "How often are the workouts?",
+    answer: "Our workouts are held biweekly on Fridays. We come together regularly to challenge ourselves and build brotherhood through shared experiences."
   },
   {
     question: "Is there a membership fee?",
-    answer: "We offer both free and premium membership tiers. The free tier gives you access to basic community features, while premium members enjoy additional benefits and exclusive content."
+    answer: "As of Q1 2025, we do not have a membership fee. Our community workouts are completely free and open to the public."
   },
   {
-    question: "How can I contribute to the community?",
-    answer: "There are many ways to contribute! You can share your knowledge through discussions, mentor other members, organize events, or create content for our community platforms."
+    question: "What else is there apart from the workouts?",
+    answer: "We have our podcast which serves as a hub for inspiring stories from our community. Through these stories, we share experiences, insights, and wisdom that help foster growth and connection beyond our physical gatherings."
   }
 ]
 
