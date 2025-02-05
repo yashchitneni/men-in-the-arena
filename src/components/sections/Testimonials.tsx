@@ -16,7 +16,7 @@ const testimonials = [
   },
   {
     quote: "The brotherhood we've built here goes beyond the gym. We push each other to excel in every aspect of life - fitness, faith, and family.",
-    author: "Jack Lesser",
+    author: "Yash Chitneni",
     role: "Member since 2023"
   },
   {
