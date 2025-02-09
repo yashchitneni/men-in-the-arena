@@ -22,10 +22,6 @@ const photos = [
     alt: 'Man during workout',
     className: 'col-span-2'
   },
-  {
-    src: '/images/gallery/brotherhood-5.jpg',
-    alt: 'Men at the beach',
-  }
 ]
 
 export const Gallery = () => {

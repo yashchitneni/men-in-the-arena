@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Youtube, Music } from 'lucide-react'
 import {
   Accordion,
   AccordionContent,
@@ -10,20 +11,44 @@ import {
 
 const faqs = [
   {
-    question: "What makes this community special?",
-    answer: "We don't only push ourselves, but create room for other men to tap into their full potential. Our community is built on the foundation of mutual growth and empowerment."
-  },
-  {
-    question: "How often are the workouts?",
-    answer: "Our workouts are held biweekly on Fridays. We come together regularly to challenge ourselves and build brotherhood through shared experiences."
-  },
-  {
     question: "Is there a membership fee?",
     answer: "As of Q1 2025, we do not have a membership fee. Our community workouts are completely free and open to the public."
   },
   {
-    question: "What else is there apart from the workouts?",
-    answer: "We have our podcast which serves as a hub for inspiring stories from our community. Through these stories, we share experiences, insights, and wisdom that help foster growth and connection beyond our physical gatherings."
+    question: "How often are the workouts?",
+    answer: "We hold bi-weekly workouts every Friday at 3:55 pm at Squatch Frontier Fitness. Check above for our most recent workout."
+  },
+  {
+    question: "What else is there apart from workouts?",
+    answer: "We raise awareness, we raise money, and we collectively take action through our quarterly community oriented initiative."
+  },
+  {
+    question: "What are other resources?",
+    answer: (
+      <div className="flex flex-col space-y-4">
+        <p>Follow our journey and get inspired through our content:</p>
+        <div className="flex space-x-4">
+          <a 
+            href="https://www.youtube.com/@MENINTHEARENA_11.11" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors"
+          >
+            <Youtube className="w-5 h-5" />
+            <span>YouTube Channel</span>
+          </a>
+          <a 
+            href="https://open.spotify.com/show/5pOSDqLNCZLArkyc3FLIET?si=51d59711325b40b7" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors"
+          >
+            <Music className="w-5 h-5" />
+            <span>Podcast</span>
+          </a>
+        </div>
+      </div>
+    )
   }
 ]
 

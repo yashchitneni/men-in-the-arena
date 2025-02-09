@@ -5,34 +5,29 @@ import Image from 'next/image'
 
 const testimonials = [
   {
-    quote: "Being part of this brotherhood has transformed not just my physical strength, but my mental fortitude. Every session pushes me to be a better man than I was yesterday.",
-    author: "Mason Stevens",
-    role: "Member since 2023"
+    quote: "Surrounding myself with men who are excelling in life in many areas I'd like to also excel has made me raise the bar in my own life. My fitness has improved but more so my mind has improved and my conversations and outlook and circle and habits",
+    author: "Alec Alvaraz",
+    role: "Member"
   },
   {
-    quote: "There's something powerful about struggling together, growing together. This isn't just a workout - it's where iron sharpens iron.",
-    author: "CJ Finley",
-    role: "Founding Member"
+    quote: "Men In The Arena has had a profound impact as my life. Community, brotherhood, friendship, an outlet for my thoughts and daily stressors, killer workouts, better communication skills, leadership and event planning opportunities. It's provided so much joy and pushed me to fight for what I want out of my life.",
+    author: "Jake Morsch",
+    role: "Member"
   },
   {
-    quote: "The brotherhood we've built here goes beyond the gym. We push each other to excel in every aspect of life - fitness, faith, and family.",
-    author: "Yash Chitneni",
-    role: "Member since 2023"
+    quote: "Making friends has always been easy, however, developing greater value and intention behind relationships for purpose of lifting up myself and other men around me with the support of MITA has been a critical and impactful element in my life since moving to Austin.",
+    author: "Kevin Kurz",
+    role: "Member"
   },
   {
-    quote: "Every time I think I've hit my limit, the guys here help me push through. It's about building character as much as building strength.",
-    author: "Ryan Baca",
-    role: "Member since 2024"
+    quote: "MTA has introduced me to such a wide and diverse group of men who are looking to improve in almost every facet of their life. It's acted as a healthy measuring stick on my habits, decisions, and actions to show me where I can improve and where I can serve.",
+    author: "Jack Lesser",
+    role: "Member"
   },
   {
-    quote: "This isn't just about getting stronger physically - it's about building a community of men who support and challenge each other to grow.",
-    author: "Theo Tsirigotis",
-    role: "Member since 2023"
-  },
-  {
-    quote: "The accountability and brotherhood here is unmatched. We're all on the same mission to become better men, better leaders.",
-    author: "Alec Alvarez",
-    role: "Member since 2023"
+    quote: "It becomes a staple / great social time working out with other like minded men. Helped me work on stepping up and lead / work on my public speaking abilities. Pushed me to step into a new area of life I haven't spend much time, helping others outside of my immediate circle.",
+    author: "Robin Perségol",
+    role: "Member"
   }
 ]
 

@@ -20,7 +20,7 @@ export const Hero = () => {
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full">
           <img 
-            src="/images/hero-group.jpg" 
+            src="/images/hero-group.DNG" 
             alt="Men in the Arena Group Workout" 
             className="w-full h-full object-cover"
           />
