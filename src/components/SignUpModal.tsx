@@ -1,83 +1,73 @@
 'use client'
 
-import { useState } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Check } from 'lucide-react'
+import { useEffect } from 'react'
 
 interface SignUpModalProps {
   isOpen: boolean
   onClose: () => void
 }
 
-export function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
-  const [step, setStep] = useState<'form' | 'success'>('form')
-
-  const handleSuccess = () => {
-    setStep('success')
-    // Optional: Add to Airtable here if needed
-    // You can access the form data from the Substack iframe submission
+// Add type declaration for CustomSubstackWidget
+declare global {
+  interface Window {
+    CustomSubstackWidget?: {
+      substackUrl: string
+      placeholder: string
+      buttonText: string
+      theme: string
+      colors: {
+        primary: string
+        input: string
+        email: string
+        text: string
+      }
+    }
   }
+}
+
+export function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.CustomSubstackWidget = {
+        substackUrl: "meninthearena.substack.com",
+        placeholder: "Enter your email",
+        buttonText: "Enter the Arena",
+        theme: "custom",
+        colors: {
+          primary: "#0f172a", // Darker button for better contrast
+          input: "#ffffff", // White input background
+          email: "#1e293b", // Dark text for input
+          text: "#ffffff", // White text for button
+        }
+      };
+
+      const script = document.createElement('script');
+      script.src = "https://substackapi.com/widget.js";
+      script.async = true;
+      document.body.appendChild(script);
+
+      return () => {
+        document.body.removeChild(script);
+      };
+    }
+  }, [isOpen]);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px]">
-        <AnimatePresence mode="wait">
-          {step === 'form' ? (
-            <motion.div
-              key="form"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-            >
-              <DialogHeader>
-                <DialogTitle>Join the Brotherhood</DialogTitle>
-                <DialogDescription>
-                  Subscribe to our newsletter to stay updated with our latest events and stories.
-                </DialogDescription>
-              </DialogHeader>
-              
-              <div className="mt-4 bg-white rounded-lg overflow-hidden">
-                <iframe 
-                  src="https://meninthearena.substack.com/embed" 
-                  width="100%" 
-                  height="320" 
-                  style={{ border: '1px solid #EEE', background: 'white' }}
-                  frameBorder="0" 
-                  scrolling="no"
-                  onLoad={() => {
-                    // Add event listener for successful subscription
-                    window.addEventListener('message', (event) => {
-                      if (event.data?.type === 'subscriptionSuccess') {
-                        handleSuccess()
-                      }
-                    })
-                  }}
-                />
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="success"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="text-center py-4"
-            >
-              <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <Check className="w-6 h-6 text-primary" />
-              </div>
-              <DialogTitle className="mb-2">Welcome to the Brotherhood!</DialogTitle>
-              <DialogDescription className="mb-6">
-                Check your email for a welcome message and stay tuned for our latest updates.
-              </DialogDescription>
-              <Button onClick={onClose} className="w-full">
-                Close
-              </Button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <DialogContent className="sm:max-w-[600px]">
+        <DialogHeader>
+          <DialogTitle>Join the Brotherhood</DialogTitle>
+          <DialogDescription>
+            Take your first step into the arena. Subscribe to receive wisdom, challenges, and brotherhood.
+          </DialogDescription>
+        </DialogHeader>
+        
+        <div className="mt-4">
+          <div className="bg-card rounded-lg overflow-hidden p-6">
+            <div id="custom-substack-embed" />
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
   )
