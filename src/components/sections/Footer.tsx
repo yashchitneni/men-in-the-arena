@@ -32,7 +32,6 @@ export const Footer = () => {
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><a href="#hero" className="text-muted-foreground hover:text-primary transition-colors">Home</a></li>
-              <li><a href="#events" className="text-muted-foreground hover:text-primary transition-colors">Events</a></li>
               <li><a href="#gallery" className="text-muted-foreground hover:text-primary transition-colors">Gallery</a></li>
               <li><a href="#testimonials" className="text-muted-foreground hover:text-primary transition-colors">Testimonials</a></li>
               <li><a href="#faq" className="text-muted-foreground hover:text-primary transition-colors">FAQ</a></li>

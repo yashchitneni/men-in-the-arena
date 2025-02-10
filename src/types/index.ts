@@ -15,4 +15,13 @@ export interface Activity {
 export interface FAQ {
   question: string
   answer: string
+}
+
+export interface Event {
+  id: string
+  title: string
+  date: string
+  time: string
+  leader: string
+  location: string
 } 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Navigation } from '@/components/Navigation'
 import { Hero } from '@/components/sections/Hero'
-import { Features } from '@/components/sections/Features'
 import { Gallery } from '@/components/sections/Gallery'
 import { Partners } from '@/components/sections/Partners'
 import { Testimonials } from '@/components/sections/Testimonials'
@@ -14,7 +13,6 @@ export default function Home() {
     <main className="min-h-screen">
       <Navigation />
       <Hero />
-      <Features />
       <Gallery />
       <Partners />
       <Testimonials />

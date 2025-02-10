@@ -49,14 +49,6 @@ export const Navigation = () => {
 
             <div className="hidden md:flex items-center space-x-8">
               <a 
-                href="#events" 
-                className={`transition-colors hover:text-primary ${
-                  isScrolled ? 'text-foreground' : 'text-white'
-                }`}
-              >
-                Events
-              </a>
-              <a 
                 href="#gallery" 
                 className={`transition-colors hover:text-primary ${
                   isScrolled ? 'text-foreground' : 'text-white'

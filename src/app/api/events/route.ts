@@ -1,144 +1,98 @@
 import { NextResponse } from 'next/server'
-import Airtable from 'airtable'
+import type { Event } from '@/types'
 
-// Field IDs
-const FIELD_IDS = {
-  workouts: {
-    name: 'fldz35f3gr7fu8v02',
-    date: 'fldFwtJrG7QlXmQa0',
-    leaderName: 'fld1WMLhYGSVzbNh8',
-    location: 'fldTNx2QmRpCpUTCG'
-  },
-  contactInfo: {
-    firstName: 'fldwyV10pgy7dfrmx',
-    lastName: 'fldhG5lREy3LbL8v2'
-  }
-}
-
-// Validate environment variables
-const validateEnvVariables = () => {
-  const required = {
-    AIRTABLE_API_KEY: process.env.AIRTABLE_API_KEY,
-    AIRTABLE_BASE_ID: process.env.AIRTABLE_BASE_ID,
-    AIRTABLE_WORKOUTS_TABLE_ID: process.env.AIRTABLE_WORKOUTS_TABLE_ID,
-    AIRTABLE_CONTACTS_TABLE_ID: process.env.AIRTABLE_CONTACTS_TABLE_ID
-  }
-
-  const missing = Object.entries(required)
-    .filter(([_, value]) => !value)
-    .map(([key]) => key)
-
-  if (missing.length > 0) {
-    throw new Error(`Missing required environment variables: ${missing.join(', ')}`)
-  }
-}
-
-// Initialize Airtable
-const initializeAirtable = () => {
-  try {
-    return new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID!)
-  } catch (error) {
-    console.error('Error initializing Airtable:', error)
-    throw new Error('Failed to initialize Airtable connection')
+interface AirtableRecord {
+  id: string
+  fields: {
+    Name: string
+    Date: string
+    Time: string
+    'Leader Name': string
+    Location: string
   }
 }
 
 export async function GET() {
   try {
+    // Log environment variables (safely)
+    const envCheck = {
+      hasApiKey: !!process.env.AIRTABLE_API_KEY,
+      hasBaseId: !!process.env.AIRTABLE_BASE_ID,
+      hasTableId: !!process.env.AIRTABLE_WORKOUTS_TABLE_ID,
+      apiKeyLength: process.env.AIRTABLE_API_KEY?.length || 0,
+      baseIdLength: process.env.AIRTABLE_BASE_ID?.length || 0,
+      tableIdLength: process.env.AIRTABLE_WORKOUTS_TABLE_ID?.length || 0
+    }
+    console.log('Environment check:', envCheck)
+
     // Validate environment variables
-    validateEnvVariables()
+    if (!process.env.AIRTABLE_API_KEY || !process.env.AIRTABLE_BASE_ID || !process.env.AIRTABLE_WORKOUTS_TABLE_ID) {
+      throw new Error(`Missing required environment variables: ${JSON.stringify(envCheck)}`)
+    }
 
-    // Initialize Airtable
-    const base = initializeAirtable()
+    const today = new Date().toISOString().split('T')[0]
+    console.log('Fetching records after:', today)
 
-    console.log('Attempting to fetch records from table:', process.env.AIRTABLE_WORKOUTS_TABLE_ID)
+    const url = `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${process.env.AIRTABLE_WORKOUTS_TABLE_ID}`
+    const params = new URLSearchParams({
+      filterByFormula: `AND(NOT({Date} = ''), IS_AFTER({Date}, '${today}'))`,
+      sort: JSON.stringify([{ field: "Date", direction: "asc" }]),
+      maxRecords: "10"
+    })
 
-    // Fetch upcoming events
-    const records = await base(process.env.AIRTABLE_WORKOUTS_TABLE_ID!).select({
-      maxRecords: 3,
-      sort: [{ field: FIELD_IDS.workouts.date, direction: 'asc' }],
-      filterByFormula: `IS_AFTER({${FIELD_IDS.workouts.date}}, TODAY())`,
-      fields: [
-        FIELD_IDS.workouts.name,
-        FIELD_IDS.workouts.date,
-        FIELD_IDS.workouts.leaderName,
-        FIELD_IDS.workouts.location
-      ]
-    }).firstPage()
+    console.log('Fetching from URL:', `${url}?${params}`)
+    
+    const response = await fetch(`${url}?${params}`, {
+      headers: {
+        'Authorization': `Bearer ${process.env.AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    })
 
-    console.log('Successfully fetched records:', records.length)
+    if (!response.ok) {
+      const errorData = await response.json()
+      console.error('Airtable API error:', {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorData
+      })
+      throw new Error(`Airtable API error: ${response.status} ${response.statusText}`)
+    }
 
-    const events = await Promise.all(records.map(async record => {
-      // Get the linked leader record ID(s)
-      const leaderIds = record.get(FIELD_IDS.workouts.leaderName) as string[]
-      let leaderFullName = ''
-      
-      if (leaderIds && leaderIds.length > 0) {
-        try {
-          const leaderId = leaderIds[0] // Get the first leader if multiple are assigned
-          console.log('Fetching leader info for ID:', leaderId)
-          const leaderRecord = await base(process.env.AIRTABLE_CONTACTS_TABLE_ID!).find(leaderId)
-          
-          if (leaderRecord) {
-            const firstName = leaderRecord.get(FIELD_IDS.contactInfo.firstName) as string
-            const lastName = leaderRecord.get(FIELD_IDS.contactInfo.lastName) as string
-            leaderFullName = `${firstName} ${lastName}`
-            console.log('Found leader:', leaderFullName)
-          }
-        } catch (error) {
-          console.error('Error fetching leader info:', error)
+    const data = await response.json()
+    console.log('Records fetched:', data.records?.length)
+
+    const events: Event[] = data.records.map((record: AirtableRecord) => {
+      try {
+        const eventData = {
+          id: record.id,
+          title: record.fields.Name,
+          date: record.fields.Date,
+          time: record.fields.Time,
+          leader: record.fields['Leader Name'],
+          location: record.fields.Location,
         }
+        console.log('Processed event:', eventData)
+        return eventData
+      } catch (recordError) {
+        console.error('Error processing record:', record.id, recordError)
+        throw new Error(`Failed to process record ${record.id}`)
       }
-
-      // Format the date and time
-      const dateStr = record.get(FIELD_IDS.workouts.date) as string
-      const date = new Date(dateStr)
-      const formattedDate = date.toLocaleDateString('en-US', {
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric'
-      })
-      
-      const time = date.toLocaleTimeString('en-US', {
-        hour: 'numeric',
-        minute: 'numeric'
-      })
-
-      return {
-        id: record.id,
-        title: record.get(FIELD_IDS.workouts.name) as string,
-        imageUrl: '/images/workout-default.jpg',
-        leader: leaderFullName || 'TBA',
-        date: formattedDate,
-        time: time,
-        location: record.get(FIELD_IDS.workouts.location) as string
-      }
-    }))
+    })
 
     return NextResponse.json(events)
   } catch (error) {
-    console.error('Error in API route:', error)
+    // Detailed error logging
+    console.error('Detailed error in /api/events:', {
+      error,
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      type: error instanceof Error ? error.constructor.name : typeof error
+    })
     
-    // Determine the error type and return appropriate status
-    let status = 500
-    let message = 'Internal server error'
-    
-    if (error instanceof Error) {
-      if (error.message.includes('NOT_AUTHORIZED')) {
-        status = 403
-        message = 'Invalid or expired API key'
-      } else if (error.message.includes('Missing required environment')) {
-        status = 500
-        message = error.message
-      } else if (error.message.includes('NOT_FOUND')) {
-        status = 404
-        message = 'Table or record not found'
-      }
-    }
-    
-    return NextResponse.json({ 
-      error: message,
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status })
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Failed to fetch events' }, 
+      { status: 500 }
+    )
   }
 } 
