@@ -1,6 +1,6 @@
 'use client'
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
+import { Dialog, DialogContent } from '@/components/ui/dialog'
 
 interface SignUpModalProps {
   isOpen: boolean
@@ -11,24 +11,21 @@ export function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[600px]">
-        <DialogHeader>
-          <DialogTitle>Join the Brotherhood</DialogTitle>
-          <DialogDescription>
-            Take your first step into the arena. Subscribe to receive wisdom, challenges, and brotherhood.
-          </DialogDescription>
-        </DialogHeader>
-        
-        <div className="mt-4">
-          <div className="bg-card rounded-lg overflow-hidden p-6">
-            <iframe 
-              src="https://meninthearena.substack.com/embed" 
-              width="100%" 
-              height="320" 
-              style={{ border: '1px solid #EEE', background: 'white' }} 
-              frameBorder="0" 
-              scrolling="no"
-            />
-          </div>
+        <div className="bg-card rounded-lg overflow-hidden">
+          <iframe 
+            src="https://embeds.beehiiv.com/92585930-8570-4988-b68d-e446861a9c2a" 
+            data-test-id="beehiiv-embed" 
+            width="100%" 
+            height="320" 
+            frameBorder="0" 
+            scrolling="no" 
+            style={{ 
+              borderRadius: '4px', 
+              border: '2px solid #e5e7eb', 
+              margin: 0, 
+              backgroundColor: 'transparent' 
+            }}
+          />
         </div>
       </DialogContent>
     </Dialog>
