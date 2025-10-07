@@ -51,10 +51,13 @@ export const Partners = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Our Partners in the Arena
+            Partners in the Arena
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Proud to work with brands that share our values of strength, resilience, and brotherhood
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-4">
+            We partner with brands that believe in resilience, service, and community.
+          </p>
+          <p className="text-sm text-muted-foreground italic">
+            "When you partner with MTA, you're not just backing an event—you're fueling transformation in the lives of men and their communities."
           </p>
         </motion.div>
 

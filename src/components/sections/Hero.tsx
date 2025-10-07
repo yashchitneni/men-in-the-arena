@@ -44,46 +44,44 @@ export const Hero = () => {
           className="space-y-8"
         >
           <motion.h1 
-            className="text-4xl md:text-7xl font-bold mb-6 text-white tracking-tight"
-            style={{ textShadow: '0 4px 12px rgba(0,0,0,0.5)' }}
+            className="text-5xl md:text-8xl font-bold mb-4 text-white tracking-tight"
+            style={{ textShadow: '0 4px 12px rgba(0,0,0,0.5)', color: '#ffffff' }}
           >
-            Where Brotherhood Begins
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="mt-2"
-            >
-              And Men Rise <motion.span
-                initial={{ rotate: -45 }}
-                animate={{ rotate: 0 }}
-                transition={{ delay: 1, duration: 0.5 }}
-                className="inline-block"
-              >⚔️</motion.span>
-            </motion.div>
+            Enter the Arena.
           </motion.h1>
+          
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-2xl md:text-4xl font-semibold mb-8 text-white tracking-wide"
+            style={{ textShadow: '0 4px 12px rgba(0,0,0,0.5)', color: '#ffffff' }}
+          >
+            Rise as the Man You Were Meant to Be.
+          </motion.h2>
           
           <motion.p 
             className="text-xl md:text-2xl text-gray-100 mb-12 max-w-2xl mx-auto font-medium leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            style={{ textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
+            style={{ textShadow: '0 2px 8px rgba(0,0,0,0.3)', color: '#f3f4f6' }}
           >
-            Bi-Weekly workouts for men seeking connection,<br />challenge & growth.
+            We help men transform through duty, challenge, reflection, and fellowship.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex justify-center"
           >
             <Button
               size="lg"
               onClick={() => setIsModalOpen(true)}
               className="relative text-lg bg-primary hover:bg-primary/90 text-white px-12 py-8 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-500 overflow-hidden group"
             >
-              <span className="relative z-10">Enter The Arena</span>
+              <span className="relative z-10">Join a Workout</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary/50 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </Button>
           </motion.div>

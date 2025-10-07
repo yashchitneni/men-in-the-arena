@@ -15,7 +15,7 @@ const testimonials = [
     role: "Member"
   },
   {
-    quote: "Making friends has always been easy, however, developing greater value and intention behind relationships for purpose of lifting up myself and other men around me with the support of MITA has been a critical and impactful element in my life since moving to Austin.",
+    quote: "Making friends has always been easy, however, developing greater value and intention behind relationships for purpose of lifting up myself and other men around me with the support of MTA has been a critical and impactful element in my life since moving to Austin.",
     author: "Kevin Kurz",
     role: "Member"
   },
